@@ -1,32 +1,70 @@
 body {
   background-image: url("./img/cosmo.jpeg");
   background-size: cover;
-  background-repeat: no-repeat;
-  padding: 40px;
+  background-repeat: repeat;
   color: #fff;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  
 }
 
 .app {
   text-align: center;
 }
-.main {
-  display: grid;
-  grid-template-columns: .5 1 1 1 .5 ;
-  margin: 0;
-}
+
 
 .spotifyButton {
   display: flex;
-  align-content: right;
   justify-content: right;
+  align-items: right;
+  margin: 0 50px 0 0;
 }
+
 .spotifyButton a {
   background-color: #1db954;
-  border-radius: 25px;
+  border-radius: 10px;
   color: white;
   font-size: 32px;
   font-weight: bold;
-  padding: 15px;
+  padding: 10px 15px 10px 15px;
+  
+}
+
+.spotifyButton button{
+  background-color: #1db954;
+  border-radius: 25px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px 15px 10px 15px;
+}
+
+#searchButton {
+  background-color: #1db954;
+  
+  border-radius: 12.5px;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 15px;
+  
+}
+
+.searchResults {
+  display: grid;
+  justify-content: left;
+  margin: 15px;
+}
+
+.imageresults {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.artistName {
+  grid-column: 2/3;
+  grid-row: 1/2;
 }
 
 a:link {
@@ -45,12 +83,19 @@ a:active {
   text-decoration: none;
 }
 
+.main {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: 1fr .25fr 1fr ;
+  margin: 0;
+}
 .leftContainer {
-  grid-column: 2/3;
+  grid-column: 1/2;
   background-color: slategray;
   font-size: 32px;
   border-radius: 25px;
-  margin: 5% 0 0 5%;
+  margin: 5% 0 100px 5%;
   padding: 15px;
 }
 .leftContainer input{
@@ -64,15 +109,48 @@ a:active {
   border-radius: 25px;
 }
 
+.leftContainer h2{
+  font-size: 24px;
+}
+
 .leftContainer input:focus {
   border: 5px solid lightskyblue;
 }
+.resultHeader {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4,1fr);
+}
+.resultItem {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.resultItem img {
+  width: 100px;
+}
+
+.resultItem p{
+  margin: 0;
+}
 
 .rightContainer {
-  grid-column: 4/5;
+  grid-column: 3/4;
   background-color: slategray;
   font-size: 32px;
   border-radius: 25px;
-  margin: 5% 5% 0 5%;
+  margin: 5% 5% 100px 0;
   padding: 15px;
+}
+
+.playerFooter {
+  position: fixed;
+  Width: 100%;
+  bottom: 0;
+  background-color: black;
+  height: 100px;
+  font-weight: bold;
 }
