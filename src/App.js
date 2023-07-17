@@ -1,38 +1,58 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 
+
 function App() {
+  
   const clientId = "220edbc347214a93ad372a3035a0aee8";
+  const clientSecret = "a326eee392bf475a8df9643fa7b4443b";
   const responseType = "token";
   const redirectUri = "http://localhost:3000";
   const endpoint = "https://accounts.spotify.com/authorize";
-  const scope = "scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
-  const scope2 = "scope=streaming%20playlist-read-private%20playlist-modify-private%20user-read-playback-state%20user-modify-playback-state"
+  const scope = "scope=streaming%20user-read-email%20user-read-private%20user-read-email%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+  const scope2 = "scope=streaming%20playlist-read-private%20user-read-email%20playlist-modify-private%20user-read-playback-state%20user-modify-playback-state"
 
   const Auth_URL = `${endpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&${scope2}`;
   const fullUrl = "https://accounts.spotify.com/authorize?client_id=220edbc347214a93ad372a3035a0aee8&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
   
   const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("")
-  const [tracks, setTracks] = useState([])
 
   useEffect(() => {
-    const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
-
-    if (!token && hash) {
-      token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
-      window.location.hash = "";
-      window.localStorage.setItem("token", token);
-      
-    }
-    setToken(token);
+    const tokenParameters ={
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'grant_type=client_credentials&client_id=' + clientId + '&client_secret' + clientSecret
+    };
+    fetch(Auth_URL)
+      .then(result => result.json())
+      .then(data => console.log(data))
   }, []);
 
-  const logout = () => {
+  const Logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+  
   };
+
+async function userinfo() {
+
+  const userParameters ={
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  };
+    const userReturnedInfo = await fetch("http GET https://api.spotify.com/v1/me", userParameters)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      
+
+ }
+
 
   async function searchSongs(e) {
     e.preventDefault();
@@ -42,6 +62,7 @@ function App() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       }
+      
     };
   
     const data = await fetch("https://api.spotify.com/v1/search?q=" + searchKey + '&type=track', parameters)
@@ -87,17 +108,19 @@ function App() {
     }
   }
   
-    
+ 
   
   return (
     <>
+  
     <div className="app">
       <h1>Jammming</h1>
+    {console.log(userinfo())}
       <div className="spotifyButton">
       {!token ? (
         <a href={Auth_URL} >Login Spotify</a>
         ) : (
-          <button href="#" onClick={logout}>
+          <button href="#" onClick={Logout}>
             Logout
           </button>
         )} 
@@ -107,19 +130,23 @@ function App() {
         <div className='leftContainer'>
           Search Your Songs
           
-        {token ?
+          {token ?
+        <>
           <form onSubmit={searchSongs}>
             <input type="text" onChange={e=> setSearchKey(e.target.value)}/>
             <button id={"searchButton"} type={"submit"} >Search</button>
-          </form> : 
-          <h2>Please Login</h2>
-        }
-        <div className={"resultHeader"}>
+          </form> 
+          <div className={"resultHeader"}>
         <div className={"albumHeader"}>Album</div>
         <div className={"artistHeader"}>Artist</div>
         <div className={"songHeader"}>Song Title</div>
         <div className={"playlistHeader"}>Add to Playlist</div>
-        </div>
+        </div> 
+          </>
+          : 
+          <h2>Please Login</h2>
+       
+        }
       <div className={"searchResults"}>
         
         </div>
@@ -129,7 +156,9 @@ function App() {
 
         <div className='rightContainer'>
           Songs You Chose <br />For Your Playlist
+        <div className='addedTracksToPlaylist'>
 
+        </div>
         </div>
       </div>
       
