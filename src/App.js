@@ -11,7 +11,7 @@ import NewPlaylist from './newPlaylist';
 
 
 function App() {
-  const redirectUrl = "http://localhost:3000";
+  const redirectUrl = "https://jammming12.netlify.app";
   const [selectedSongIds, setSelectedSongIds] = useState([]);
   const handleClick = () =>{
   
