@@ -32,7 +32,7 @@ body {
   
 }
 
-.spotifyButton button{
+.spotifyButton button {
   background-color: #1db954;
   border-radius: 25px;
   color: white;
@@ -40,6 +40,16 @@ body {
   font-weight: bold;
   padding: 10px 15px 10px 15px;
   cursor: pointer;
+}
+
+.spotifyButton span {
+  background-color: black;
+  border-radius: 25px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px 15px 10px 15px;
+  margin-right: 15px;
 }
 
 #searchButton {
@@ -52,12 +62,6 @@ body {
   margin: 15px;
   cursor: pointer;
   
-}
-
-.searchResults {
-  display: grid;
-  justify-items: center;
-  margin: 15px;
 }
 
 
@@ -89,7 +93,7 @@ a:active {
   background-color: slategray;
   font-size: 32px;
   border-radius: 25px;
-  margin: 5% 0 100px 5%;
+  margin: 5% 0 115px 5%;
   padding: 15px;
 }
 .leftContainer input{
@@ -113,7 +117,7 @@ a:active {
 .resultHeader {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns:  .75fr 1fr 1fr .5fr;
   margin-bottom: 35px;
 }
 .resultItem {
@@ -121,11 +125,14 @@ a:active {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: .75fr 1fr 1fr .5fr;
   gap: 10px;
   font-size: 26px;
   margin-bottom: 20px;
+}
+.resultItem button {
+  background-color: #1db954;
+  font-weight: 900;
 }
 
 .resultItem img {
@@ -136,16 +143,35 @@ a:active {
   margin: 0;
 }
 
-.rightContainer {
-  grid-column: 3/4;
+.rightContainerBackground {
   background-color: slategray;
-  font-size: 32px;
   border-radius: 25px;
-  margin: 5% 5% 100px 0;
+  font-size: 32px;
+  margin: 5% 5% 115px 0;
   padding: 15px;
+  grid-column: 3/4;
+}
+
+.rightContainer {
   display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr; 
+}
+
+.rightContainer a:link {
+  color:lightgray;
+}
+
+.rightContainer a:visited {
+  color:lightgray;
+}
+
+.rightContainer a:active {
+  color:lightgray;
+}
+
+.rightContainer a:hover {
+  color:red;
 }
 
 .newTitle {
@@ -154,7 +180,7 @@ a:active {
   text-align: center;
   padding-left: 30px;
   z-index: 1;
-
+  font-weight:700;
 }
 .currentTitle {
   grid-column: 3/4;
@@ -162,20 +188,58 @@ a:active {
   text-align: center;
   padding-left: 30px;
   z-index: 1;
-  
+  font-weight:700;
+}
+.currentSongs {
+  grid-column: 4/5;
+  grid-row: 1/2;
+  text-align: center;
+  padding-left: 30px;
+  z-index: 1;
+  font-weight:700;
 }
 
 #listOfCurrentPlaylists {
-  display: block;
+  display: none;
+  grid-column: 2/4;
+  grid-row: 2/3;
+  text-align: left;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#listOfPlaylistSongs {
+  display: none;
   grid-column: 2/4;
   grid-row: 2/3;
 }
 
-#addedTracksToPlaylist {
-  display: none;
-  grid-column: 2/4;
-  grid-row: 2/3;
+#listOfCurrentPlaylists h4{
+  text-align: center;
+  color: lightblue;
+}
 
+.newPlaylistHeader input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-color: black;
+  border-width: 2.5px;
+  font-size: 26px;
+  font-weight: bold;
+  border-radius: 25px;
+}
+
+#newPlaylistButton {
+  background-color: #1db954;
+  border-radius: 12.5px;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 15px;
+  cursor: pointer;
 }
 
 .playerFooter {

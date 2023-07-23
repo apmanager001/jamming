@@ -2,15 +2,17 @@ import React, { useEffect } from 'react'
 import { useStateProvider } from './stateProvider'
 import { reducerCases } from './reducerCases';
 import axios from "axios";
+import "./footer.css"
 
 export default function Playlists() {
      const [{token, playlists}, dispatch] = useStateProvider()
     useEffect(()=> {
         const getPlaylistData = async () => {
             try {
-            const response = await axios.get('https://api.spotify.com/v1/me/playlists', 
-            {
-                headers: {
+            const response = await axios({
+            method:"get",
+            url:'https://api.spotify.com/v1/me/playlists', 
+            headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                   }
@@ -29,17 +31,23 @@ export default function Playlists() {
         getPlaylistData();
     },[token, dispatch])
 
+    const changeCurrentPlaylist = (selectedPlaylistId) => {
+        dispatch({type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId})
+    }
 
-    return <div>
+    return <div className='playList'>
+
         <ul>
             {
                 playlists.map(({name, id})=>{
                     return (
-                        <ul key={id}>{name}</ul>
+                        <li key={id} onClick={()=>changeCurrentPlaylist(id)}>{name}</li>
                     )
                 })
             }
         </ul>
+        
+        
     </div>
 
 

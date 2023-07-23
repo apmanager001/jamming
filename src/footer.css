@@ -1,0 +1,54 @@
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.currentTrack {
+    grid-column: 1/2;
+}
+.controls {
+    grid-column: 2/3;
+}
+
+.track {
+    display: grid;
+    grid-template-columns: .15fr .25fr ;
+    grid-template-rows: 1fr;
+}
+
+.track_image {
+    margin: 15px;
+    grid-column: 1/2;
+    
+
+}
+.trackInfo {
+    text-align: left;
+    color:white;
+    grid-column: 2/4;
+}
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    
+}
+
+.previous,.next,.state {
+        font-size: 2em;
+    }
+
+
+.playerControlsFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.playList li{
+    list-style-type: none;
+}
+.playList li:hover {
+    color:black;
+}
