@@ -11,7 +11,7 @@ import NewPlaylist from './newPlaylist';
 
 
 function App() {
-  const redirectUrl = "https://jammming12.netlify.app";
+  const redirectUri = "https://jammming12.netlify.app";
   const [selectedSongIds, setSelectedSongIds] = useState([]);
   const handleClick = () =>{
   
@@ -33,7 +33,7 @@ function App() {
     "user-top-read",
   ];
 
-  window.location.href = `${endpoint}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(" ")}&response_type=${responseType}`;
+  window.location.href = `${endpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope.join(" ")}&response_type=${responseType}`;
   }
 
   const [searchKey, setSearchKey] = useState("")
@@ -52,7 +52,7 @@ function App() {
   }, [token, dispatch]);
 
     const Logout = () => {
-      window.location.href = redirectUrl;
+      window.location.href = redirectUri;
     };
 
   
