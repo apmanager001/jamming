@@ -1,4 +1,4 @@
-import './right.css'
+import './App.css'
 import React, {useState, useEffect}from "react";
 import { useStateProvider } from "./stateProvider";
 import axios from "axios";
@@ -174,7 +174,7 @@ export default function NewPlaylist ({selectedSongIds, userInfo}) {
           <div className={"songHeader2"}>Song Title</div>
           <div className={"playlistHeader2"}>Remove From Playlist</div>
         </div> 
-        <div className="NewPlaylistResults2">
+        <div className="NewPlaylistResults">
 
         </div>
         </>
