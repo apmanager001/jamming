@@ -40,7 +40,7 @@ export default function NewPlaylist ({selectedSongIds, userInfo}) {
     
           // Create HTML elements to display the information
           const resultItem = document.createElement("div");
-          resultItem.classList.add("resultItem");
+          resultItem.classList.add("resultItem2");
     
           const albumImageElement = document.createElement("img");
           albumImageElement.src = albumImage;
@@ -166,7 +166,7 @@ export default function NewPlaylist ({selectedSongIds, userInfo}) {
         <div className="newPlaylistHeader">
         
             <input placeholder="Playlist Name" type="text" onChange={e=> setPlaylistName(e.target.value)}/>
-            <button id={"newPlaylistButton2"} type={"submit"} onClick={handlePlaylistSubmission}>Submit</button>
+            <button id={"newPlaylistButton"} type={"submit"} onClick={handlePlaylistSubmission}>Submit</button>
         </div>
         <div className={"resultHeader"}>
           <div className={"albumHeader"}>Album</div>
