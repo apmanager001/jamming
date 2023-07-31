@@ -173,7 +173,7 @@ function App() {
 
 
     useEffect(() => {
-      const getUserInfo =async ()=>{
+      const getUserInfo = async ()=>{
         try {
         const {data} = await axios.get('https://api.spotify.com/v1/me', {
           headers: {
@@ -189,10 +189,33 @@ function App() {
 
       dispatch({type:reducerCases.SET_USER, userInfo})
     }  catch (error){
-      console.log(error)
+      if (error.response) {
+        // The request was made, but the server responded with a status code outside the 2xx range
+        // For example, a 401 error (Unauthorized) or 404 error (Not Found)
+        console.log(error.response.data); // The error response data from the server
+        console.log(error.response.status); // The error status code (e.g., 401, 404)
+        console.log(error.response.headers); // The response headers
+
+        // You can display a specific error message to the user or handle the error appropriately
+        // For example, display a message if the user is unauthorized or handle a 404 error
+      } else if (error.request) {
+        // The request was made, but no response was received
+        // This can happen due to network issues or if the server does not respond
+        console.log(error.request); // The XMLHttpRequest instance
+
+        // You can display a message to the user indicating a network issue
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+
+        // You can display a generic error message or handle this case differently
+      }
+      console.log(error.config);
   }
       }
+      if(token){
       getUserInfo()
+      }
     }, [dispatch, token])
 
 

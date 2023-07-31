@@ -1,3 +1,4 @@
+import './right.css'
 import React, {useState, useEffect}from "react";
 import { useStateProvider } from "./stateProvider";
 import axios from "axios";
@@ -167,13 +168,13 @@ export default function NewPlaylist ({selectedSongIds, userInfo}) {
             <input placeholder="Playlist Name" type="text" onChange={e=> setPlaylistName(e.target.value)}/>
             <button id={"newPlaylistButton"} type={"submit"} onClick={handlePlaylistSubmission}>Submit</button>
         </div>
-        <div className={"resultHeader"}>
-          <div className={"albumHeader"}>Album</div>
-          <div className={"artistHeader"}>Artist</div>
-          <div className={"songHeader"}>Song Title</div>
-          <div className={"playlistHeader"}>Remove From Playlist</div>
+        <div className={"resultHeader2"}>
+          <div className={"albumHeader2"}>Album</div>
+          <div className={"artistHeader2"}>Artist</div>
+          <div className={"songHeader2"}>Song Title</div>
+          <div className={"playlistHeader2"}>Remove From Playlist</div>
         </div> 
-        <div className="NewPlaylistResults">
+        <div className="NewPlaylistResults2">
 
         </div>
         </>

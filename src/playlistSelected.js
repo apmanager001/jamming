@@ -40,8 +40,9 @@ export default function SelectedPlaylist() {
         console.log(error);
       }
     };
-
+    if(token){
     getInitialPlaylist(); 
+    }
   }, [dispatch, token, selectedPlaylistId]);
 
 

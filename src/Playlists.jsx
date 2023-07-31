@@ -28,7 +28,9 @@ export default function Playlists() {
             console.log(error)
         }
        }
+       if(token){
         getPlaylistData();
+       }
     },[token, dispatch])
 
     const changeCurrentPlaylist = (selectedPlaylistId) => {
