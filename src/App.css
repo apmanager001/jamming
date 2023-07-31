@@ -149,6 +149,7 @@ a:active {
 .resultItem2 button {
   background-color: red;
   font-weight: 900;
+  border-radius: 20px;
 }
 
 .resultItem img {
