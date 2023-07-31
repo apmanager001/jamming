@@ -166,7 +166,7 @@ export default function NewPlaylist ({selectedSongIds, userInfo}) {
         <div className="newPlaylistHeader">
         
             <input placeholder="Playlist Name" type="text" onChange={e=> setPlaylistName(e.target.value)}/>
-            <button id={"newPlaylistButton"} type={"submit"} onClick={handlePlaylistSubmission}>Submit</button>
+            <button id={"newPlaylistButton2"} type={"submit"} onClick={handlePlaylistSubmission}>Submit</button>
         </div>
         <div className={"resultHeader"}>
           <div className={"albumHeader"}>Album</div>

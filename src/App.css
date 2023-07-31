@@ -242,6 +242,17 @@ a:active {
   cursor: pointer;
 }
 
+#newPlaylistButton2 {
+  background-color: red;
+  border-radius: 12.5px;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 15px;
+  cursor: pointer;
+}
+
 .playerFooter {
   position: fixed;
   Width: 100%;
