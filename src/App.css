@@ -130,12 +130,24 @@ a:active {
   font-size: 26px;
   margin-bottom: 20px;
 }
+
+.resultItem2 {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: .75fr 1fr 1fr .5fr;
+  gap: 10px;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
 .resultItem button {
   background-color: #1db954;
   font-weight: 900;
 }
 .resultItem2 button {
-  background-color: #1db954;
+  background-color: red;
   font-weight: 900;
 }
 
@@ -143,7 +155,15 @@ a:active {
   width: 100px;
 }
 
+.resultItem2 img {
+  width: 100px;
+}
+
 .resultItem p{
+  margin: 0;
+}
+
+.resultItem2 p{
   margin: 0;
 }
 
