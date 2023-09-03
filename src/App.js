@@ -12,6 +12,7 @@ import NewPlaylist from './newPlaylist';
 
 function App() {
   const redirectUri = "https://jammming12.netlify.app";
+  //const redirectUri = "http://localhost:3000/";
   const [selectedSongIds, setSelectedSongIds] = useState([]);
   const handleClick = () =>{
   
@@ -71,15 +72,17 @@ function App() {
       if (searchKey === ""){
           alert('Please Type something in the Search Box')
       } else {
-      const data = await fetch("https://api.spotify.com/v1/search?q=" + searchKey + '&type=track', parameters)
+        
+      const data = await fetch("https://api.spotify.com/v1/search?q=" + searchKey + '&type=track&market=US', parameters)
         .then(response => response.json());
         
       const itemsArray = data.tracks.items.slice(0, 10); // Extract items 1-10 from the 'tracks' object
       displayItems(itemsArray); // Call the function to display the items
-    
+      
     }
     
     function displayItems(itemsArray) {
+      
       const searchResults = document.querySelector(".searchResults");
       searchResults.innerHTML = ""; // Clear previous search results
     
