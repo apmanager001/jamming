@@ -73,7 +73,7 @@ function App() {
           alert('Please Type something in the Search Box')
       } else {
         
-      const data = await fetch("https://api.spotify.com/v1/search?q=" + searchKey + '&type=track&market=US', parameters)
+      const data = await fetch("https://api.spotify.com/v1/search?q=" + searchKey + '&type=track&market=IT', parameters)
         .then(response => response.json());
         
       const itemsArray = data.tracks.items.slice(0, 10); // Extract items 1-10 from the 'tracks' object
